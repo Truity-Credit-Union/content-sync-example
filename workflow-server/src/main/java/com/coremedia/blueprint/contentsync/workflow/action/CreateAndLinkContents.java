@@ -2,6 +2,7 @@ package com.coremedia.blueprint.contentsync.workflow.action;
 
 import com.coremedia.blueprint.contentsync.client.IAPIConstants;
 import com.coremedia.blueprint.contentsync.client.IAPIContext;
+import com.coremedia.blueprint.contentsync.client.context.ContentSyncConnectionContext;
 import com.coremedia.blueprint.contentsync.client.model.content.ContentDataModel;
 import com.coremedia.blueprint.contentsync.client.model.content.ContentRefDataModel;
 import com.coremedia.blueprint.contentsync.client.services.IAPIRepository;
@@ -80,7 +81,8 @@ public class CreateAndLinkContents extends SpringAwareLongAction {
     Process process = task.getContainingProcess();
     return new ActionParameters(getNumericIds(process.getList(getRemoteSyncIdsVariable())),
             process.getString(getEnvironmentVariable()),
-            process.getString(getTokenVariable()));
+            process.getString(getTokenVariable())
+            );
   }
 
   @Override
@@ -328,26 +330,27 @@ public class CreateAndLinkContents extends SpringAwareLongAction {
 
   static final class ActionParameters {
 
-    final List<String> remoteSyncIds;
-    final String environment;
-    final String token;
-    final IAPIRepository remoteRepository;
+    List<String> remoteSyncIds;
+    String environment;
+    String token;
+    IAPIRepository remoteRepository;
 
-    ActionParameters(List<String> remoteSyncIds, String environment, String token) {
+    ActionParameters(List<String> remoteSyncIds,
+                     String environment,
+                     String token) {
       this.remoteSyncIds = remoteSyncIds;
       this.environment = environment;
       this.token = token;
-      remoteRepository = IAPIContext.withHostAndToken(environment, token).build().getRepository();
-    }
 
-    /**
-     * Constructor for test purposes.
-     */
-    ActionParameters(List<String> remoteSyncIds, String environment, String token, IAPIRepository remoteRepository) {
-      this.remoteSyncIds = remoteSyncIds;
-      this.environment = environment;
-      this.token = token;
-      this.remoteRepository = remoteRepository;
+      remoteRepository = IAPIContext
+              .withContext(new ContentSyncConnectionContext(
+                      environment,
+                      token,
+                      null,
+                      null)
+              )
+              .build()
+              .getRepository();
     }
   }
 }

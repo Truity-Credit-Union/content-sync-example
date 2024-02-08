@@ -1,5 +1,7 @@
 package com.coremedia.blueprint.contentsync;
 
+import com.coremedia.blueprint.contentsync.client.context.ContentSyncConnectionContext;
+import edu.umd.cs.findbugs.annotations.NonNull;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.Map;
@@ -19,7 +21,6 @@ public class ContentSyncProperties {
   Map<String, String> tokens;
   Map<String, String> syncGroups;
   Map<String,String>  sync2wfs;
-
   public Map<String, String> getSyncGroups() {
     return syncGroups;
   }
@@ -50,5 +51,13 @@ public class ContentSyncProperties {
 
   public void setSync2wfs(Map<String, String> sync2wfs) {
     this.sync2wfs = sync2wfs;
+  }
+
+  public ContentSyncConnectionContext createContextFor(@NonNull String ident){
+    return new ContentSyncConnectionContext(
+            getHosts().getOrDefault(ident,null),
+            getTokens().getOrDefault(ident,null),
+            getSyncGroups().getOrDefault(ident,"administratoren"),
+            ident);
   }
 }

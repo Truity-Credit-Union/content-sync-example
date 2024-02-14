@@ -16,17 +16,15 @@
     "@coremedia/studio-client.main.editor-components": "2204.3.0",
     "@jangaroo/ext-ts": "^1.0.3",
     "@jangaroo/runtime": "^1.3.0",
-    "@jangaroo/jooflash-core": "^1.2.1"
+    "@jangaroo/jooflash-core": "^1.3.0"
   },
   "devDependencies": {
     "@jangaroo/build": "^1.3.0",
     "@jangaroo/core": "^1.3.0",
     "@jangaroo/eslint-config": "^1.3.0",
-    "@jangaroo/joounit": "^1.2.1",
+    "@jangaroo/joounit": "^1.3.0",
     "@jangaroo/publish": "^1.3.0",
     "eslint": "^7.27.0",
-    "jest": "^28.0.2",
-    "jest-junit": "^13.2.0",
     "rimraf": "^3.0.2"
   },
   "scripts": {

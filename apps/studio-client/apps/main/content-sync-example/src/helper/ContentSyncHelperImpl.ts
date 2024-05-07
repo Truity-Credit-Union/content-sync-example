@@ -113,7 +113,7 @@ class ContentSyncHelperImpl implements IContentSyncHelper {
     var def = new Deferred();
     var remoteBean = beanFactory._.getRemoteBean(ContentSyncHelperImpl.#CS_BASE_URL
             .concat(ContentSyncHelperImpl.#NO_IDENT)
-            .concat(ContentSyncHelperImpl.#CS_WFS_RUNNING);
+            .concat(ContentSyncHelperImpl.#CS_WFS_RUNNING));
     if (!remoteBean.isLoaded()) {
       remoteBean.load((data:RemoteBean):void => {
         var dataArray:Array<any> = data.get("items");

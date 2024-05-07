@@ -35,7 +35,7 @@ class OpenContentSyncWindowActionBase extends Action {
         workArea.setActiveTab(editor);
       });
     } else {
-      workArea.setActiveTab(ContentSyncEditor);
+      workArea.setActiveTab(contentSyncWindowTab);
     }
   }
 }

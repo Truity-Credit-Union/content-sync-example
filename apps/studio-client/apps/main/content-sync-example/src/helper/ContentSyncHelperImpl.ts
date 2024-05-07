@@ -74,10 +74,10 @@ class ContentSyncHelperImpl implements IContentSyncHelper {
 
     var remoteServiceMethod = new RemoteServiceMethod(url, "POST", true, true);
     remoteServiceMethod.request({
-      remoteSyncIds: allContents.map((item:FolderTreeNode) => 
+      remoteSyncIds: allContents.map((item:FolderTreeNode) =>
          item.data.id
       )
-    }, (ok):void => 
+    }, (ok):void =>
       trace("[ContentSyncHelper] started workflow for " + selectedSync + " " + css.identifier)
     );
 
@@ -101,7 +101,7 @@ class ContentSyncHelperImpl implements IContentSyncHelper {
                 if (!envList) {
                   def.resolve([]);
                 }
-                def.resolve(envList.map((item:Struct):ContentSyncSettings => 
+                def.resolve(envList.map((item:Struct):ContentSyncSettings =>
                    new ContentSyncSettings(item, propertyExcludes, contentTypeExcludes, "1")
                 ));
               });
@@ -113,8 +113,7 @@ class ContentSyncHelperImpl implements IContentSyncHelper {
     var def = new Deferred();
     var remoteBean = beanFactory._.getRemoteBean(ContentSyncHelperImpl.#CS_BASE_URL
             .concat(ContentSyncHelperImpl.#NO_IDENT)
-            .concat(ContentSyncHelperImpl.#CS_WFS_RUNNING)
-            .concat("?_ds="+new Date().time));
+            .concat(ContentSyncHelperImpl.#CS_WFS_RUNNING);
     if (!remoteBean.isLoaded()) {
       remoteBean.load((data:RemoteBean):void => {
         var dataArray:Array<any> = data.get("items");
@@ -136,12 +135,12 @@ class ContentSyncHelperImpl implements IContentSyncHelper {
             .concat(ContentSyncHelperImpl.#REFERENCES)
             .concat(id)
             .concat("/")
-            .concat(recursion)
+            .concat(String(recursion))
             .concat("?");
     url = ContentSyncHelperImpl.#addExclusions(url,ExcludeListRadioGroupBase.PROPERTY_EXCLUDE,modelBean).concat("&");
     url = ContentSyncHelperImpl.#addExclusions(url,ExcludeListRadioGroupBase.CONTENT_TYPE_EXCLUDE,modelBean);
     var remoteBean:RemoteBean =as( beanFactory._.getRemoteBean(url),  ContentSyncReferenceModel);
-    remoteBean.load((bean:ContentSyncReferenceModel):void => 
+    remoteBean.load((bean:ContentSyncReferenceModel):void =>
       def.resolve(bean)
     );
     return def;
@@ -172,7 +171,7 @@ class ContentSyncHelperImpl implements IContentSyncHelper {
     var oldValue:Array<any> = model.get(ContentSyncConstants.CONTENT_LIST_BEAN_PROPERTY);
     var newContentListValue = oldValue;
     origFnArr.forEach((entry:FolderTreeNode):void =>{
-      newContentListValue = newContentListValue.filter((item:FolderTreeNode):boolean => 
+      newContentListValue = newContentListValue.filter((item:FolderTreeNode):boolean =>
          item.data.id !== entry.data.id
       );
     });

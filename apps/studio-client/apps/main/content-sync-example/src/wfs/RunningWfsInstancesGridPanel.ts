@@ -21,8 +21,9 @@ class RunningWfsInstancesGridPanel extends RunningWfsInstancesGridPanelBase {
   static override readonly xtype: string = "com.coremedia.blueprint.contentsync.studio.wfs.runningWfsInstancesGridPanel";
 
   constructor(config: Config<RunningWfsInstancesGridPanel> = null) {
+    // @ts-expect-error Ext JS semantics
+    const this$ = this;
     super((() => ConfigUtils.apply(Config(RunningWfsInstancesGridPanel, {
-
       columns: [
         Config(Column, {
           stateId: "name",
@@ -36,12 +37,12 @@ class RunningWfsInstancesGridPanel extends RunningWfsInstancesGridPanelBase {
           sortable: false,
           flex: 1,
           tooltip: ContentSyncPluginResources_properties.ContentSync_AbortWorkflow_ToolTip,
-          handler: bind(this, this.handleAbortWorkflow)
+          handler: bind(this$, this$.handleAbortWorkflow)
         })
       ],
       plugins: [
-        Config(LinkListBindListPlugin, {bindTo: this.getVE()}),
-        Config(BindVisibilityPlugin, {bindTo: this.getVE(), transformer: bind(this, this.isComponentVisible)})
+        Config(LinkListBindListPlugin, {bindTo: this$.getVE()}),
+        Config(BindVisibilityPlugin, {bindTo: this$.getVE(), transformer: bind(this$, this$.isComponentVisible)})
       ],
       layout: Config(HBoxLayout, {
         align: "strech"

@@ -20,7 +20,7 @@
     "@jangaroo/jooflash-core": "3.0.1"
   },
   "devDependencies": {
-    "@jangaroo/build": "^3.0.0",
+    "@jangaroo/build": "3.0.0",
     "@jangaroo/core": "^3.0.0",
     "@jangaroo/eslint-config": "^2.0.0",
     "@jangaroo/joounit": "^3.0.0",

@@ -31,6 +31,13 @@
     "jest-junit": "^13.2.0",
     "rimraf": "^5.0.5"
   },
+  "resolutions": {
+    "@jangaroo/jangaroo-net": "3.0.0",
+    "@jangaroo/runtime": "3.0.0",
+    "@jangaroo/core": "3.0.0",
+    "@jangaroo/joounit": "3.0.0",
+    "@jangaroo/publish": "3.0.0"
+  },
   "scripts": {
     "clean": "rimraf ./dist && rimraf ./build",
     "build": "jangaroo build",

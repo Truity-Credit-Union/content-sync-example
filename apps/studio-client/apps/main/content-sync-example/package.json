@@ -17,26 +17,19 @@
     "@jangaroo/ext-ts": "^2.0.0",
     "@jangaroo/jangaroo-net": "^3.0.0",
     "@jangaroo/runtime": "^3.0.0",
-    "@jangaroo/jooflash-core": "3.0.1"
+    "@jangaroo/jooflash-core": "^3.0.0"
   },
   "devDependencies": {
     "@jangaroo/build": "^3.0.0",
     "@jangaroo/core": "^3.0.0",
     "@jangaroo/eslint-config": "^2.0.0",
     "@jangaroo/joounit": "^3.0.0",
-    "@jangaroo/jooflash-core": "3.0.1",
+    "@jangaroo/jooflash-core": "^3.0.0",
     "@jangaroo/publish": "^3.0.0",
     "eslint": "^8.56.0",
     "jest": "^29.7.0",
     "jest-junit": "^13.2.0",
     "rimraf": "^5.0.5"
-  },
-  "resolutions": {
-    "@jangaroo/jangaroo-net": "3.0.0",
-    "@jangaroo/runtime": "3.0.0",
-    "@jangaroo/core": "3.0.0",
-    "@jangaroo/joounit": "3.0.0",
-    "@jangaroo/publish": "3.0.0"
   },
   "scripts": {
     "clean": "rimraf ./dist && rimraf ./build",

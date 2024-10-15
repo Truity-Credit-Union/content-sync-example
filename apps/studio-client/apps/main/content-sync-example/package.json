@@ -17,7 +17,7 @@
     "@jangaroo/ext-ts": "^2.0.0",
     "@jangaroo/jangaroo-net": "^3.0.1",
     "@jangaroo/runtime": "^3.0.1",
-    "@jangaroo/jooflash-core": "^3.0.0"
+    "@jangaroo/jooflash-core": "^3.0.1"
   },
   "devDependencies": {
     "@jangaroo/build": "^3.0.1",

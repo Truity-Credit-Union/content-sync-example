@@ -31,7 +31,7 @@ class ContentSyncStudioPlugin extends ContentSyncStudioPluginBase{
 
   override init(editorContext: IEditorContext) {
     super.init(editorContext);
-    cast(StudioAppsImpl, studioApps._).getSubAppLauncherRegistry().registerSubAppLauncher("cmContentSync", (): void => {
+    cast(StudioAppsImpl, studioApps._).getSubAppLauncherRegistry().registerShortcutRunner("cmContentSync", (): void => {
       const openTagsAction:Action = new OpenContentSyncWindowAction();
       openTagsAction.execute();
     });
